@@ -1,0 +1,57 @@
+﻿@model SistemaLoja.Models.Produto
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes do Produto - @Html.DisplayFor(model => model.Descricao)</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Descrição")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Preco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Preco)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Última Compra")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UltimaCompra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estoque)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estoque)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Comentário")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comentario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>
