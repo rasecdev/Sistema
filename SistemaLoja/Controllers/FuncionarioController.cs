@@ -17,7 +17,8 @@ namespace SistemaLoja.Controllers
         // GET: Funcionario
         public ActionResult Index()
         {
-            return View(db.Funcionarios.ToList());
+            var funcionarios = db.Funcionarios.Include(f => f.TipoDocumento);
+            return View(funcionarios.ToList());
         }
 
         // GET: Funcionario/Details/5
@@ -38,6 +39,7 @@ namespace SistemaLoja.Controllers
         // GET: Funcionario/Create
         public ActionResult Create()
         {
+            ViewBag.TipoDocumentoID = new SelectList(db.TipoDocumentoes, "TipoDocumentoID", "Descricao");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace SistemaLoja.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FuncionarioID,Nome,Sobrenome,Salario,Comissao,Nascimento,Admissao,email")] Funcionario funcionario)
+        public ActionResult Create([Bind(Include = "FuncionarioID,Nome,Sobrenome,Salario,Comissao,Nascimento,Admissao,Email,TipoDocumentoID")] Funcionario funcionario)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace SistemaLoja.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.TipoDocumentoID = new SelectList(db.TipoDocumentoes, "TipoDocumentoID", "Descricao", funcionario.TipoDocumentoID);
             return View(funcionario);
         }
 
@@ -70,6 +73,7 @@ namespace SistemaLoja.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.TipoDocumentoID = new SelectList(db.TipoDocumentoes, "TipoDocumentoID", "Descricao", funcionario.TipoDocumentoID);
             return View(funcionario);
         }
 
@@ -78,7 +82,7 @@ namespace SistemaLoja.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "FuncionarioID,Nome,Sobrenome,Salario,Comissao,Nascimento,Admissao,email")] Funcionario funcionario)
+        public ActionResult Edit([Bind(Include = "FuncionarioID,Nome,Sobrenome,Salario,Comissao,Nascimento,Admissao,Email,TipoDocumentoID")] Funcionario funcionario)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace SistemaLoja.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.TipoDocumentoID = new SelectList(db.TipoDocumentoes, "TipoDocumentoID", "Descricao", funcionario.TipoDocumentoID);
             return View(funcionario);
         }
 

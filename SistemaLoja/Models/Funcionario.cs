@@ -23,7 +23,9 @@ namespace SistemaLoja.Models
 
         public DateTime Admissao { get; set; }
 
-        public string email { get; set; }
+        public string Email { get; set; }
+
+        public int TipoDocumentoID { get; set; }
 
         public virtual TipoDocumento TipoDocumento { get; set; }
     }
