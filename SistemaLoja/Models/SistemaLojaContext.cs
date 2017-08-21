@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace SistemaLoja.Models
 {
@@ -13,6 +14,13 @@ namespace SistemaLoja.Models
     
         public SistemaLojaContext() : base("name=SistemaLojaContext")
         {
+        }
+
+        // Não excluir em cascata
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            //   base.OnModelCreating(modelBuilder);
         }
 
         public System.Data.Entity.DbSet<SistemaLoja.Models.Produto> Produtos { get; set; }

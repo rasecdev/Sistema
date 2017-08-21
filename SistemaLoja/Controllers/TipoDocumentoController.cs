@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using SistemaLoja.Models;
+using System;
 
 namespace SistemaLoja.Controllers
 {
@@ -107,7 +108,16 @@ namespace SistemaLoja.Controllers
         {
             TipoDocumento tipoDocumento = db.TipoDocumentoes.Find(id);
             db.TipoDocumentoes.Remove(tipoDocumento);
-            db.SaveChanges();
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                
+            }
+            
             return RedirectToAction("Index");
         }
 
