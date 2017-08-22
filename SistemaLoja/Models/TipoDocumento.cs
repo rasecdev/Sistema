@@ -17,5 +17,7 @@ namespace SistemaLoja.Models
         public string Descricao { get; set; }
 
         public virtual ICollection<Funcionario> Funcionarios { get; set; }
+
+        public virtual ICollection<Customizar> Customizacao { get; set; }
     }
 }
