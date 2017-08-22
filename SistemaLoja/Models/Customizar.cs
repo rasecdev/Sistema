@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SistemaLoja.Models
 {
@@ -34,5 +35,7 @@ namespace SistemaLoja.Models
 
         public virtual TipoDocumento TipoDocumento { get; set; }
 
-        }
+        public virtual ICollection<Ordem> Ordem { get; set; }
+
+    }
 }
