@@ -33,6 +33,8 @@ namespace SistemaLoja.Models
         [Display(Name = "Tipo de Documento")]
         public int TipoDocumentoId { get; set; }
 
+        public string NomeCompleto { get { return string.Format("{0} {1}", Nome, Sobrenome); } }
+
         public virtual TipoDocumento TipoDocumento { get; set; }
 
         public virtual ICollection<Ordem> Ordem { get; set; }
