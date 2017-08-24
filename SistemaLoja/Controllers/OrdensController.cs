@@ -171,13 +171,15 @@ namespace SistemaLoja.Controllers
             //Verifica se o produto adicionado já existe na ordem.
             produtoOrdem = ordemView.Produtos.Find(p => p.ProdutoId == produtoId);
 
-            float quantidade = float.Parse(Request["Quantidade"]);
+            float quantidade = 0;
+            //TryParse para não ter o erro de formatação na cadeia de caracteres.
+            float.TryParse(Request["Quantidade"], out quantidade);
             if (quantidade == 0)
             {
                 //list.Add(new ProdutoOrdem { ProdutoId = 0, Descricao = "[Selecione um produto]" });
                 list = list.OrderBy(x => x.Descricao).ToList();
                 ViewBag.ProdutoId = new SelectList(list, "ProdutoId", "Descricao");
-                ViewBag.Error = "Digite a quantidade";
+                ViewBag.Error = "Digite a quantidade maior que (0)";
 
                 return View(produtoOrdem);
             }
