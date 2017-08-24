@@ -5,9 +5,11 @@
 
 <h2>Nova Ordem</h2>
 
-<h3>@ViewBag.Error</h3>
+<h5>@ViewBag.Error</h5>
+<h5>@ViewBag.Mensagem</h5>
 
-@using (Html.BeginForm())
+@*Padão do BeginForm = ActionResult, Controller, Tipo de Metodo*@
+@using (Html.BeginForm("NovaOrdem", "Ordens", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -22,12 +24,12 @@
         
         @Html.ActionLink("Adicionar Produto", "AddProduto", new { }, new { @class="btn btn-primary"}) 
 
-        <input type="submit" value="Criar Ordem" id="NovaOrdem" class="btn btn-default" />
+        <input type="submit" value="Criar Ordem" id="NovaOrdem" class="btn btn-success" />
            
     </div>
 }
 
-<h2>Detalhes do Pedido</h2>
+<h4>Detalhes do Pedido</h4>
 
 <table class="table">
     <tr>
