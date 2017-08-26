@@ -11,12 +11,14 @@ namespace SistemaLoja.Controllers
         private SistemaLojaContext db = new SistemaLojaContext();
 
         // GET: Produto
+        [Authorize(Roles =("View"))]
         public ActionResult Index()
         {
             return View(db.Produtos.ToList());
         }
 
         // GET: Produto/Details/5
+        [Authorize(Roles = ("View"))]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -32,6 +34,7 @@ namespace SistemaLoja.Controllers
         }
 
         // GET: Produto/Create
+        [Authorize(Roles = ("Create"))]
         public ActionResult Create()
         {
             return View();
@@ -55,6 +58,7 @@ namespace SistemaLoja.Controllers
         }
 
         // GET: Produto/Edit/5
+        [Authorize(Roles = ("Edit"))]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -86,6 +90,7 @@ namespace SistemaLoja.Controllers
         }
 
         // GET: Produto/Delete/5
+        [Authorize(Roles = ("Delete"))]
         public ActionResult Delete(int? id)
         {
             if (id == null)
