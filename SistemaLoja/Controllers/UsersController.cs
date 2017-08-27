@@ -4,10 +4,12 @@ using SistemaLoja.Models;
 using SistemaLoja.Models.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 
 namespace SistemaLoja.Controllers
 {
+    [Authorize(Users = "super@super.com")]
     public class UsersController : Controller
     {
         //Referência para a conexão Default (usada para login)
@@ -154,6 +156,51 @@ namespace SistemaLoja.Controllers
             };
 
             return View(userView);
+        }
+
+        public ActionResult Delete(string userId, string roleId)
+        {
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(roleId))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+            var user = userManager.Users.ToList().Find(u => u.Id == userId); ;
+
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>());
+            var roles = roleManager.Roles.ToList();
+            var role = roles.Find(r => r.Id == roleId);
+                        
+            var rolesView = new List<RoleView>();
+
+            //Se existe um usuário e uma permissão relacionados, então pode ser excluída.
+            if (userManager.IsInRole(user.Id, role.Name))
+            {
+                userManager.RemoveFromRole(user.Id, role.Name);
+            }
+                       
+            foreach (var item in user.Roles)
+            {
+                role = roles.Find(r => r.Id == item.RoleId);
+                var roleView = new RoleView
+                {
+                    RoleId = role.Id,
+                    Name = role.Name
+                };
+
+                rolesView.Add(roleView);
+            }
+
+            var userView = new UserView
+            {
+                Email = user.Email,
+                Nome = user.UserName,
+                UserId = user.Id,
+                Roles = rolesView
+            };
+
+            return View("Roles", userView);
         }
 
         protected override void Dispose(bool disposing)

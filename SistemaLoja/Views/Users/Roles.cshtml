@@ -18,7 +18,7 @@
         </td>
         <td>
             @*Passando como parâmetro para a exclusão o Usuário e o RoleId*@
-            @Html.ActionLink("Excluir", "Delete", new { user = Model, roleId = Model.Roles[i].RoleId })
+            @Html.ActionLink("Excluir", "Delete", new { userId = Model.UserId, roleId = Model.Roles[i].RoleId })
         </td>
     </tr>
     }
