@@ -207,6 +207,7 @@
     <Compile Include="Controllers\PessoaController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Controllers\TipoDocumentoController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -316,6 +317,9 @@
     <Content Include="Views\Pessoa\Index.cshtml" />
     <Content Include="Views\Ordens\NovaOrdem.cshtml" />
     <Content Include="Views\Ordens\AddProduto.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\Roles.cshtml" />
+    <Content Include="Views\Users\AddRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

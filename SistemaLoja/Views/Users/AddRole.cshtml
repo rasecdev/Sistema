@@ -1,0 +1,28 @@
+﻿@model SistemaLoja.Models.ViewModels.UserView
+@{
+    ViewBag.Title = "AddRole";
+}
+
+<h2>Permissões do usuário - @Model.Nome</h2>
+<h3>@ViewBag.Error</h3>
+
+@*Padão do BeginForm = ActionResult, Controller, variável de parâmetro para o post, Tipo de Metodo*@
+@using (Html.BeginForm("AddRole", "Users", new { userId = Model.UserId }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Role.RoleId, "Permissões", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("RoleId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Role.RoleId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.ActionLink("Voltar", "Roles", new {userId = Model.UserId }, new { @class = "btn btn-primary" })
+
+        <input type="submit" value="Adidionar Permissão" id="AddRole" class="btn btn-info" />
+
+    </div>
+}
