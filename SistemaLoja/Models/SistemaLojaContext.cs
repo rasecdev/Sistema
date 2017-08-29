@@ -14,6 +14,9 @@ namespace SistemaLoja.Models
     
         public SistemaLojaContext() : base("name=SistemaLojaContext")
         {
+            this.Configuration.LazyLoadingEnabled = false;
+            //Resolve o problema de formatação de caracters para o WEB API.
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         // Não excluir em cascata
@@ -38,5 +41,7 @@ namespace SistemaLoja.Models
         public System.Data.Entity.DbSet<SistemaLoja.Models.OrdemDetalhe> OrdemDetalhe { get; set; }
 
         public System.Data.Entity.DbSet<SistemaLoja.Models.Categoria> Categorias { get; set; }
+
+        public System.Data.Entity.DbSet<SistemaLoja.Models.OrdensAPI> OrdensAPIs { get; set; }
     }
 }
