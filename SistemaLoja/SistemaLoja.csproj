@@ -215,7 +215,7 @@
     <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\OrdemAPIController.cs" />
+    <Compile Include="Migrations\OrdemAPIController.cs" />
     <Compile Include="Controllers\OrdensController.cs" />
     <Compile Include="Controllers\PessoaController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
