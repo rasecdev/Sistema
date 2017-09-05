@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using SistemaLoja.Models;
+using System.Net.Mail;
 
 namespace SistemaLoja
 {
@@ -18,8 +15,30 @@ namespace SistemaLoja
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            var envia = "modificarsenhaantiga@hotmail.com";
+            var user = "modificarsenhaantiga@hotmail.com";
+            var pass = "Mosean.123";
+
+            System.Net.NetworkCredential credencial = new System.Net.NetworkCredential(user, pass);
+
+            //SmtpDeliveryMethod.Network é o normalmente utilizado.
+            SmtpClient client = new SmtpClient()
+            {
+                Host = "smtp.live.com",
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                Port = 25,
+                EnableSsl = true,
+                Credentials = credencial
+            };
+
+            //message.Destination = message dado recebido do método e será enviado ao destino.
+            var mail = new MailMessage(envia, message.Destination);
+            mail.Subject = message.Subject;
+            mail.Body = message.Body;
+            mail.IsBodyHtml = true;
+
+            return client.SendMailAsync(mail);
+
         }
     }
 
