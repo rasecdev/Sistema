@@ -37,7 +37,7 @@ namespace WCF
         [DataMember]
         public Nullable<float> Quantidade { get; set; }
 
-        [DataMember]
+        [IgnoreDataMember]
         public string Discriminator { get; set; }
     }
 }

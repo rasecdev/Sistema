@@ -1,4 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.ServiceModel.Web;
+using System.Text;
 
 namespace WCF
 {
@@ -6,22 +12,27 @@ namespace WCF
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IServiceLoja
     {
-        public string GetData(int value)
+        public Produtoes GetProduto(int produtoId)
         {
-            return string.Format("You entered: {0}", value);
+            var db = new SistemaLojaEntities();
+
+            var produto = db.Produtoes.Find(produtoId);
+
+            db.Dispose();
+
+            return produto;
+
         }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public List<Produtoes> GetProdutos()
         {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+            var db = new SistemaLojaEntities();
+
+            var produtos = db.Produtoes.ToList();
+
+            db.Dispose();
+
+            return produtos;
         }
     }
 }
