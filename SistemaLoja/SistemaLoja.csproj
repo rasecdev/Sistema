@@ -259,10 +259,13 @@
     <Content Include="Imagens\01.jpg" />
     <Content Include="Imagens\02.png" />
     <Content Include="Imagens\03.jpg" />
-    <Content Include="Imagens\Fofo London Eye.jpg" />
+    <Content Include="Imagens\Foto Currículo.png" />
+    <Content Include="Imagens\software.jpg" />
     <Content Include="Imagens\tec1.png" />
     <Content Include="Imagens\tec2.png" />
-    <Content Include="Imagens\Tecno.jpg" />
+    <Content Include="Imagens\tech.jpg" />
+    <Content Include="Imagens\tech2.jpg" />
+    <Content Include="Imagens\tech3.jpg" />
     <Content Include="Images\loader.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

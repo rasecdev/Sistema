@@ -5,21 +5,22 @@
 }
 
 <h2>Categorias</h2>
-
+</br>
 @using (Html.BeginForm())
 {
-    <button id="btnGetCategorias">Buscar Categorias</button>
-    <button id="btnGetCategoria">Buscar Categoria</button>
-    <button id="btnAddCategorias">ADD Categorias</button>
-    <button id="btnUpdateCategorias">Ediatr Categorias</button>
-    <button id="btnDeleteCategorias">Deletar Categorias</button>
-
+    @*Div que configura o comportamento dos buttons que vai de muito pequena até grande escala, usado para demonstrar
+        divisões diferentes dos buttons em celular, tablet e pc.*@
+    <div class="col-xs-4 col-sm-4 col-md-12 col-lg-12">
+        <button id="btnGetCategorias" class="btn btn-success"> <i class="glyphicon glyphicon-th-list"></i>&nbsp;Buscar Categorias</button>
+        <button id="btnGetCategoria" class="btn btn-info"> <i class="glyphicon glyphicon-search"></i>&nbsp;Buscar Categoria</button>
+        <button id="btnAddCategorias" class="btn btn-default"> <i class="glyphicon glyphicon-plus"></i> &nbsp;ADD Categorias</button>
+        <button id="btnUpdateCategorias" class="btn btn-info"> <i class="glyphicon glyphicon-pencil"></i>&nbsp;Ediatr Categorias</button>
+        <button id="btnDeleteCategorias" class="btn btn-danger"> <i class="glyphicon glyphicon-remove"></i>&nbsp;Deletar Categorias</button>
+    </div>
     <br />    <br />
 
-    <input id="txtCategoriaId" type="text" placeholder="Id Categoria"/>
-    <input id="txtDescricao" type="text" placeholder="Descrição" />
-
-    <br/>    <br />
+    <input id="txtCategoriaId" class="form-control" type="text" placeholder="Id Categoria"/>
+    <input id="txtDescricao" class="form-control" type="text" placeholder="Descrição" />
 
     <div id="lblMensagem"></div>
 }
@@ -37,11 +38,23 @@
 
                 .success(function (data) {
                     var saida = '';
+                        saida += '<table class="table">';
+                        saida += '<thread>';
+                        saida += '<tr>';
+                        saida += '<th>Categoria ID</th>';
+                        saida += '<th>Descrição</th>';
+                        saida += '</tr>';
+                        saida += '</thread>';
+                        saida += '<tbody>';
+                        saida += '<tr>';
                     for (var i = 0; i < data.length; i++) {
-                        saida += '<hr><br>';
-                        saida += '<b>Categoria ID: </b>' + data[i].CategoriaId + '<br>';
-                        saida += '<b>Descrição: </b>' + data[i].Descricao + '<br>';
+                        saida += '<td>' + data[i].CategoriaId + '</td>';
+                        saida += '<td>' + data[i].Descricao + '</td>';
+                        saida += '</tr>';
                     }
+                        saida += '</tbody>';
+                        saida += '</table>';
+
                     $("#lblMensagem").html(saida);
                 })
                 .error(function (xhr, ajaxOptions, throwError) {
@@ -71,9 +84,20 @@
                     if (data != null) {
                         var saida = '';
 
-                        saida += '<hr><br>';
-                        saida += '<b>Categoria ID: </b>' + data.CategoriaId + '<br>';
-                        saida += '<b>Descrição: </b>' + data.Descricao + '<br>';
+                        saida += '<table class="table">';
+                        saida += '<thread>';
+                        saida += '<tr>';
+                        saida += '<th>Categoria ID</th>';
+                        saida += '<th>Descrição</th>';
+                        saida += '</tr>';
+                        saida += '</thread>';
+                        saida += '<tbody>';
+                        saida += '<tr>';
+                        saida += '<td>' + data.CategoriaId + '</td>';
+                        saida += '<td>' + data.Descricao + '</td>';
+                        saida += '</tr>';
+                        saida += '</tbody>';
+                        saida += '</table>';
 
                         $("#lblMensagem").html(saida);
                     } else {
@@ -106,14 +130,26 @@
                 cache: false,
             })
 
-
                 .success(function (data) {
 
                     var saida = '';
 
-                    saida += '<hr>Categoria Adicionada <br>';
-                    saida += '<b>Categoria ID: </b>' + data.CategoriaId + '<br>';
-                    saida += '<b>Descrição: </b>' + data.Descricao + '<br>';
+                    saida += '<hr>Categoria Adicionada <br> <br>';
+
+                    saida += '<table class="table">';
+                    saida += '<thread>';
+                    saida += '<tr>';
+                    saida += '<th>Categoria ID</th>';
+                    saida += '<th>Descrição</th>';
+                    saida += '</tr>';
+                    saida += '</thread>';
+                    saida += '<tbody>';
+                    saida += '<tr>';
+                    saida += '<td>' + data.CategoriaId + '</td>';
+                    saida += '<td>' + data.Descricao + '</td>';
+                    saida += '</tr>';
+                    saida += '</tbody>';
+                    saida += '</table>';
 
                     $("#lblMensagem").html(saida);
 
@@ -155,7 +191,7 @@
 
                     var saida = '';
 
-                    saida += '<hr>Categoria modificada com sucesso. <br>';
+                    saida += '<hr>Categoria modificada com sucesso. <br> <br>';
 
                     $("#lblMensagem").html(saida);
 
@@ -188,9 +224,22 @@
                     if (data != null) {
                         var saida = '';
 
-                        saida += '<hr>Categoria excluída com sucesso!<br>';
-                        saida += '<b>Categoria ID: </b>' + data.CategoriaId + '<br>';
-                        saida += '<b>Descrição: </b>' + data.Descricao + '<br>';
+                        saida += '<hr>Categoria excluída com sucesso!<br> <br>';
+
+                        saida += '<table class="table">';
+                        saida += '<thread>';
+                        saida += '<tr>';
+                        saida += '<th>Categoria ID</th>';
+                        saida += '<th>Descrição</th>';
+                        saida += '</tr>';
+                        saida += '</thread>';
+                        saida += '<tbody>';
+                        saida += '<tr>';
+                        saida += '<td>' + data.CategoriaId + '</td>';
+                        saida += '<td>' + data.Descricao + '</td>';
+                        saida += '</tr>';
+                        saida += '</tbody>';
+                        saida += '</table>';
 
                         $("#lblMensagem").html(saida);
                     } else {
