@@ -7,6 +7,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/Site.css" />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -51,6 +53,33 @@
         @RenderBody()
         <hr />
         <footer>
+            <div class="footer-social">
+                <div class="container text-center">
+                    <ul class="list-inline">
+                        <li class="list-inline-item social-github">
+                            <a href="https://github.com/blackrockdigital">
+                                <i class="fa fa-github"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item social-twitter">
+                            <a href="https://twitter.com/sbootstrap">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item social-facebook">
+                            <a href="https://www.facebook.com/StartBootstrap/">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item social-google-plus">
+                            <a href="https://plus.google.com/+Startbootstrap">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
             <p>&copy; @DateTime.Now.Year -  Sistema RasecDev</p>
         </footer>
     </div>

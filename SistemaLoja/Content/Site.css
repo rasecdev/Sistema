@@ -22,3 +22,68 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*Dados vindo do CSS do template utilizado.*/
+footer .footer-social {
+    margin-top: 50px;
+    margin-bottom: 0;
+}
+
+footer .footer-social ul.list-inline {
+margin: 0;
+}
+
+footer .footer-social ul.list-inline li {
+margin: 0 10px;
+}
+
+footer .footer-social ul.list-inline li a {
+display: block;
+height: 50px;
+width: 50px;
+line-height: 50px;
+font-size: 25px;
+border-radius: 100%;
+color: white;
+}
+
+footer .footer-social ul.list-inline li.social-github a {
+background-color: #333333;
+transition: all 0.2s ease-in-out;
+}
+
+footer .footer-social ul.list-inline li.social-github a:hover {
+    background-color: #262626;
+}
+
+footer .footer-social ul.list-inline li.social-twitter a {
+background-color: #1da1f2;
+transition: all 0.2s ease-in-out;
+}
+
+footer .footer-social ul.list-inline li.social-twitter a:hover {
+    background-color: #0d95e8;
+}
+
+footer .footer-social ul.list-inline li.social-facebook a {
+background-color: #3b5998;
+transition: all 0.2s ease-in-out;
+}
+
+footer .footer-social ul.list-inline li.social-facebook a:hover {
+    background-color: #344e86;
+}
+
+footer .footer-social ul.list-inline li.social-google-plus a {
+background-color: #dd4b39;
+transition: all 0.2s ease-in-out;
+}
+
+footer .footer-social ul.list-inline li.social-google-plus a:hover {
+    background-color: #d73925;
+}
+
+footer .footer-main {
+text-align: center;
+padding: 50px 0;
+}
